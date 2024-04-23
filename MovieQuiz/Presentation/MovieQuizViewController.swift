@@ -170,7 +170,7 @@ final class MovieQuizViewController: UIViewController {
     }
     
     private func changeStateButton(isEnabled: Bool) {
-            buttonYes.isEnabled = isEnabled
-            buttonNo.isEnabled = isEnabled
-        }
+        buttonYes.isEnabled = isEnabled
+        buttonNo.isEnabled = isEnabled
+    }
 }

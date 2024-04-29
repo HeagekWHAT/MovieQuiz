@@ -40,10 +40,6 @@ final class MovieQuizViewController: UIViewController {
         let buttonText: String
     }
     
-    private struct QuizResultAnswerViewModel {
-        let answer: Bool
-    }
-    
     private struct QuizQuestion {
         let image: String
         let text: String

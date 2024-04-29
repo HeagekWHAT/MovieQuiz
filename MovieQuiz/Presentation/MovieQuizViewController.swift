@@ -40,10 +40,6 @@ final class MovieQuizViewController: UIViewController {
         let buttonText: String
     }
     
-    private struct QuizResultAnswerViewModel {
-        let answer: Bool
-    }
-    
     private struct QuizQuestion {
         let image: String
         let text: String
@@ -112,8 +108,7 @@ final class MovieQuizViewController: UIViewController {
             correctAnswers += 1
         }
         
-        buttonYes.isEnabled = false
-        buttonNo.isEnabled = false
+        changeStateButton(isEnabled: false)
         imageView.layer.masksToBounds = true
         imageView.layer.borderWidth = 8
         imageView.layer.borderColor = isCorrect ? UIColor.ypGreen.cgColor : UIColor.ypRed.cgColor
@@ -138,8 +133,7 @@ final class MovieQuizViewController: UIViewController {
     
     private func showNextQuestionOrResults() {
         imageView.layer.borderWidth = 0
-        buttonYes.isEnabled = true
-        buttonNo.isEnabled = true
+        changeStateButton(isEnabled: true)
         if currentQuestionIndex == questions.count - 1 {
             let text = "Ваш результат: \(correctAnswers)/10"
             let viewModel = QuizResultViewModel(
@@ -169,5 +163,10 @@ final class MovieQuizViewController: UIViewController {
         }
         alert.addAction(action)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    private func changeStateButton(isEnabled: Bool) {
+        buttonYes.isEnabled = isEnabled
+        buttonNo.isEnabled = isEnabled
     }
 }
